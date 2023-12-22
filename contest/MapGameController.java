@@ -54,13 +54,13 @@ public class MapGameController implements Initializable {
     public void keyAction(KeyEvent event) {
         KeyCode key = event.getCode();
         System.out.println("keycode:" + key);
-        if (key == KeyCode.H) {
+        if (key == KeyCode.A) {
             leftButtonAction();
-        } else if (key == KeyCode.J) {
+        } else if (key == KeyCode.S) {
             downButtonAction();
-        } else if (key == KeyCode.K) {
+        } else if (key == KeyCode.W) {
             upButtonAction();
-        } else if (key == KeyCode.L) {
+        } else if (key == KeyCode.D) {
             rightButtonAction();
         }
     }
@@ -111,12 +111,25 @@ public class MapGameController implements Initializable {
 
     @FXML
     public void func2ButtonAction(ActionEvent event) {
-        System.out.println("func2: Nothing to do");
+        int cx = chara.getPosX();
+        int cy = chara.getPosY();
+        mapData = new MapData(21, 15);
+        chara = new MoveChara(cx,cy, mapData);
+        mapImageViews = new ImageView[mapData.getHeight() * mapData.getWidth()];
+        for (int y = 0; y < mapData.getHeight(); y ++) {
+            for (int x = 0; x < mapData.getWidth(); x ++) {
+                int index = y * mapData.getWidth() + x;
+                mapImageViews[index] = mapData.getImageView(x, y);
+            }
+        }
+        drawMap(chara, mapData);
+        System.out.println("func2: new map");
     }
 
     @FXML
     public void func3ButtonAction(ActionEvent event) {
         System.out.println("func3: Nothing to do");
+        
     }
 
     @FXML
