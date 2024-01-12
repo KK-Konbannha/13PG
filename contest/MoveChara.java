@@ -65,9 +65,9 @@ public class MoveChara {
     private boolean isMovable(int dx, int dy) {
         if (mapData.getMap(posX + dx, posY + dy) == MapData.TYPE_WALL) {
             return false;
-        } else if (mapData.getMap(posX + dx, posY + dy) == MapData.TYPE_SPACE ) {
+        } else if (mapData.getMap(posX + dx, posY + dy) == MapData.TYPE_SPACE) {
             return true;
-        } else if (mapData.geMap(posX + dx, posY + dy) == MapData.TYPE_GOAL) {
+        } else if (mapData.getMap(posX + dx, posY + dy) == MapData.TYPE_GOAL) {
             return true;
         } else {
             return false;
@@ -80,6 +80,7 @@ public class MoveChara {
             posX += dx;
             posY += dy;
             System.out.println("chara[X,Y]:" + posX + "," + posY);
+            goalCheck(posX, posY);
             return true;
         } else {
             return false;
