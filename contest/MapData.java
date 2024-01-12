@@ -80,13 +80,13 @@ public class MapData {
             }
         }
 
-        dfs(x, y, 0, visited, deepestSpace, maxDepth);
+        maxDepth = dfs(x, y, 0, visited, deepestSpace, maxDepth);
         return deepestSpace;
     }
 
-    private void dfs(int current_x, int current_y, int depth, int[][] visited, int[] deepestSpace, int maxDepth) {
+    private int dfs(int current_x, int current_y, int depth, int[][] visited, int[] deepestSpace, int maxDepth) {
         if (visited[current_y][current_x] == 1 || getMap(current_x, current_y) == MapData.TYPE_WALL) {
-            return;
+            return maxDepth;
         }
         visited[current_y][current_x] = 1;
         if (maxDepth < depth) {
@@ -99,9 +99,10 @@ public class MapData {
             int dx = dl[i][0];
             int dy = dl[i][1];
             if (getMap(current_x + dx, current_y + dy) == MapData.TYPE_SPACE) {
-                dfs(current_x + dx, current_y + dy, depth + 1, visited, deepestSpace, maxDepth);
+                maxDepth = dfs(current_x + dx, current_y + dy, depth + 1, visited, deepestSpace, maxDepth);
             }
         }
+        return maxDepth;
     }
 
     public int getMap(int x, int y) {
