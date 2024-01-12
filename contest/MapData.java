@@ -5,7 +5,10 @@ public class MapData {
     public static final int TYPE_SPACE = 0;
     public static final int TYPE_WALL = 1;
     public static final int TYPE_GOAL = 2;
-    private static final String mapImageFiles[] = { "png/SPACE.png", "png/WALL.png", "png/GOAL.png" };
+    public static final int TYPE_Mushroom = 3;
+    public static final int TYPE_Warp = 4;
+
+    private static final String mapImageFiles[] = { "png/SPACE.png", "png/WALL.png", "png/GOAL.png", "png/mushroom.png", "png/warp.png"};
     // コメント
 
     private Image[] mapImages;
@@ -59,6 +62,38 @@ public class MapData {
             if (getMap(x + dx * 2, y + dy * 2) == MapData.TYPE_WALL) {
                 setMap(x + dx, y + dy, MapData.TYPE_SPACE);
                 digMap(x + dx * 2, y + dy * 2);
+            }
+        }
+    }
+
+    // setting mushroom
+    private void setMushroom(){
+        int posMushX_rand, posMushY_rand, true_count1;
+        true_count = 0;
+        while(true_count1 = 1){
+            posMushX_rand = (int)(Math.random() * 21);
+            posMushY_rand = (int)(Math.random() * 15);
+            if(!(posMushX_rand = 1 && posMushY_rand = 1)){
+                if(mapData.getMap(posMushX_rand, posMushY_rand) == 0) {
+                    setMap(posMushX_rand, posMushY_rand, Mapdata.TYPE_Mushroom);
+                    true_count1 = 1;
+                }
+            }
+        }
+    }
+
+    // setting warp_Item
+    private void setWarp(){
+       int posWarpX_rand, posWarpY_rand, true_count2;
+       true_count2 = 0;
+        while(true_count2 = 1){
+            posWarpX_rand = (int)(Math.random() * 21);
+            posWarpY_rand = (int)(Math.random() * 15);
+            if(!(posWarpX_rand = 1 && posWarpY_rand = 1)){
+                if(mapData.getMap(posWarpX_rand, posWarpY_rand) == 0) {
+                    setMap(posWarpX_rand, posWarpY_rand, Mapdata.TYPE_Warp);
+                    true_count2 = 1;
+                }
             }
         }
     }
