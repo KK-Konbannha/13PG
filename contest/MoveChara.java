@@ -76,6 +76,7 @@ public class MoveChara {
             posY += dy;
             System.out.println("chara[X,Y]:" + posX + "," + posY);
             goalCheck(posX, posY);
+            warpCheck(posX, posY);
             return true;
         } else {
             return false;
@@ -85,6 +86,13 @@ public class MoveChara {
     private void goalCheck(int x, int y) {
         if (mapData.getMap(x, y) == MapData.TYPE_GOAL) {
             System.out.println("game clear");
+        }
+    }
+
+    private void warpCheck(int x, int y) {
+        if (mapData.getMap(x, y) == MapData.TYPE_WARP) {
+            this.posX = 1;
+            this.posY = 1;
         }
     }
 
