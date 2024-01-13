@@ -104,6 +104,10 @@ public class MapGameController implements Initializable {
     public void func2ButtonAction(ActionEvent event) {
         mapData = new MapData(21, 15);
         chara = new MoveChara(1, 1, mapData);
+        chara.TYPE_DOWN = 0;
+        chara.TYPE_LEFT = 1;
+        chara.TYPE_RIGHT = 2;
+        chara.TYPE_UP = 3;
         drawMap();
         System.out.println("func2: new map");
     }
