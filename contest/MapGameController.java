@@ -17,19 +17,11 @@ public class MapGameController implements Initializable {
     public MapData mapData;
     public MoveChara chara;
     public GridPane mapGrid;
-    public ImageView[] mapImageViews;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         mapData = new MapData(21, 15);
         chara = new MoveChara(1, 1, mapData);
-        mapImageViews = new ImageView[mapData.getHeight() * mapData.getWidth()];
-        for (int y = 0; y < mapData.getHeight(); y++) {
-            for (int x = 0; x < mapData.getWidth(); x++) {
-                int index = y * mapData.getWidth() + x;
-                mapImageViews[index] = mapData.getImageView(x, y);
-            }
-        }
         drawMap();
     }
 
@@ -40,7 +32,6 @@ public class MapGameController implements Initializable {
         mapGrid.getChildren().clear();
         for (int y = 0; y < mapData.getHeight(); y++) {
             for (int x = 0; x < mapData.getWidth(); x++) {
-                int index = y * mapData.getWidth() + x;
                 if (x == cx && y == cy) {
                     mapGrid.add(chara.getCharaImageView(), x, y);
                 } else {
@@ -113,13 +104,6 @@ public class MapGameController implements Initializable {
     public void func2ButtonAction(ActionEvent event) {
         mapData = new MapData(21, 15);
         chara = new MoveChara(1, 1, mapData);
-        mapImageViews = new ImageView[mapData.getHeight() * mapData.getWidth()];
-        for (int y = 0; y < mapData.getHeight(); y++) {
-            for (int x = 0; x < mapData.getWidth(); x++) {
-                int index = y * mapData.getWidth() + x;
-                mapImageViews[index] = mapData.getImageView(x, y);
-            }
-        }
         drawMap();
         System.out.println("func2: new map");
     }
