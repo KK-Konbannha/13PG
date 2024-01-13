@@ -65,13 +65,8 @@ public class MoveChara {
     private boolean isMovable(int dx, int dy) {
         if (mapData.getMap(posX + dx, posY + dy) == MapData.TYPE_WALL) {
             return false;
-        } else if (mapData.getMap(posX + dx, posY + dy) == MapData.TYPE_SPACE) {
-            return true;
-        } else if (mapData.getMap(posX + dx, posY + dy) == MapData.TYPE_GOAL) {
-            return true;
-        } else {
-            return false;
         }
+        return true;
     }
 
     // move the cat
