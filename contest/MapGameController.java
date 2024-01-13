@@ -44,7 +44,7 @@ public class MapGameController implements Initializable {
                 if (x == cx && y == cy) {
                     mapGrid.add(chara.getCharaImageView(), x, y);
                 } else {
-                    mapGrid.add(mapImageViews[index], x, y);
+                    mapGrid.add(mapData.getImageView(x, y), x, y);
                 }
             }
         }
