@@ -16,8 +16,6 @@ public class MapData {
     private int[][] maps;
     private int width; // width of the map
     private int height; // height of the map
-    private int posMushX_rand, posMushY_rand, true_count1;
-    private int posWarpX_rand, posWarpY_rand, true_count2;
 
     MapData(int x, int y) {
         mapImages = new Image[mapImageFiles.length];
@@ -32,8 +30,7 @@ public class MapData {
 
         fillMap(MapData.TYPE_WALL);
         digMap(1, 3);
-        setMushroom();
-        setWarp();
+        setItems(MapData.TYPE_MUSHROOM, MapData.TYPE_WARP);
         decideGoal();
         setImageViews();
     }
@@ -70,37 +67,14 @@ public class MapData {
         }
     }
 
-    // setting mushroom
-    private void setMushroom() {
-        // int posMushX_rand, posMushY_rand, true_count1;
-        true_count1 = 0;
-        while (true_count1 < 1) {
-            posMushX_rand = (int) (Math.random() * 21);
-            posMushY_rand = (int) (Math.random() * 15);
-            if (posMushX_rand != 1 || posMushY_rand != 1) {
-                if (this.getMap(posMushX_rand, posMushY_rand) == 0) {
-                    setMap(posMushX_rand, posMushY_rand, this.TYPE_MUSHROOM);
-
-                    true_count1 = 1;
-                }
-            }
-        }
-    }
-
-    // setting warp_Item
-    private void setWarp() {
-        // int posWarpX_rand, posWarpY_rand, true_count2;
-        true_count2 = 0;
-        while (true_count2 < 1) {
-            posWarpX_rand = (int) (Math.random() * 21);
-            posWarpY_rand = (int) (Math.random() * 15);
-            if (posWarpX_rand != 1 || posWarpY_rand != 1) {
-                if (this.getMap(posWarpX_rand, posWarpY_rand) == 0) {
-                    setMap(posWarpX_rand, posWarpY_rand, this.TYPE_WARP);
-
-                    true_count2 = 1;
-                }
-            }
+    private void setItems(int... items) {
+        for (int item : items) {
+            int x, y;
+            do {
+                x = (int) (Math.random() * width);
+                y = (int) (Math.random() * height);
+            } while (!(x == 1 && y == 1) && getMap(x, y) != MapData.TYPE_SPACE);
+            setMap(x, y, item);
         }
     }
 
@@ -178,13 +152,5 @@ public class MapData {
 
     public int getWidth() {
         return width;
-    }
-
-    public int getPosWarpX() {
-        return posWarpX_rand;
-    }
-
-    public int getPosWarpY() {
-        return posWarpY_rand;
     }
 }
