@@ -4,10 +4,10 @@ import javafx.scene.shape.Rectangle;
 import javafx.animation.AnimationTimer;
 
 public class MoveChara {
-    public static final int TYPE_DOWN = 0;
-    public static final int TYPE_LEFT = 1;
-    public static final int TYPE_RIGHT = 2;
-    public static final int TYPE_UP = 3;
+    public static int TYPE_DOWN = 0;
+    public static int TYPE_LEFT = 1;
+    public static int TYPE_RIGHT = 2;
+    public static int TYPE_UP = 3;
 
     private final String[] directions = { "Down", "Left", "Right", "Up" };
     private final String[] animationNumbers = { "1", "2", "3" };
@@ -77,6 +77,7 @@ public class MoveChara {
             System.out.println("chara[X,Y]:" + posX + "," + posY);
             goalCheck(posX, posY);
             warpCheck(posX, posY);
+            mushCheck(posX, posY);
             return true;
         } else {
             return false;
@@ -89,13 +90,28 @@ public class MoveChara {
         }
     }
 
-    private void warpCheck(int x, int y) { 
-            if (mapData.getMap(x, y) == MapData.TYPE_WARP) {
-                this.posX = 1;
-                this.posY = 1;
-                mapData.setMap(x,y,MapData.TYPE_SPACE);
-                mapData.setImageViews();
-            }
+    private void warpCheck(int x, int y) {
+        if (mapData.getMap(x, y) == MapData.TYPE_WARP) {
+            this.posX = 1;
+            this.posY = 1;
+            mapData.setMap(x, y, MapData.TYPE_SPACE);
+            mapData.setImageViews();
+        }
+    }
+
+    private void mushCheck(int x, int y) {
+        if (mapData.getMap(x, y) == MapData.TYPE_MUSHROOM) {
+            TYPE_DOWN = (int) (Math.random() * 4);
+            do {
+                TYPE_LEFT = (int) (Math.random() * 4);
+            } while (TYPE_DOWN == TYPE_LEFT);
+            do {
+                TYPE_RIGHT = (int) (Math.random() * 4);
+            } while (TYPE_DOWN == TYPE_RIGHT || TYPE_LEFT == TYPE_RIGHT);
+            do {
+                TYPE_UP = (int) (Math.random() * 4);
+            } while (TYPE_DOWN == TYPE_UP || TYPE_LEFT == TYPE_UP || TYPE_RIGHT == TYPE_UP);
+        }
     }
 
     // getter: direction of the cat
