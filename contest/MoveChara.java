@@ -89,11 +89,13 @@ public class MoveChara {
         }
     }
 
-    private void warpCheck(int x, int y) {
-        if (mapData.getMap(x, y) == MapData.TYPE_WARP) {
-            this.posX = 1;
-            this.posY = 1;
-        }
+    private void warpCheck(int x, int y) { 
+            if (mapData.getMap(x, y) == MapData.TYPE_WARP) {
+                this.posX = 1;
+                this.posY = 1;
+                mapData.setMap(x,y,MapData.TYPE_SPACE);
+                mapData.setImageViews();
+            }
     }
 
     // getter: direction of the cat
@@ -109,13 +111,6 @@ public class MoveChara {
     // getter: y-positon of the cat
     public int getPosY() {
         return posY;
-    }
-
-    public void warpEffect(){
-        int rx = this.getPosX();
-        int ry = this.getPosY(); 
-        rx = 1;
-        ry = 1; 
     }
 
     // Show the cat animation
