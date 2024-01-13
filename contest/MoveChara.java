@@ -70,7 +70,26 @@ public class MoveChara {
     }
 
     // move the cat
-    public boolean move(int dx, int dy) {
+    public boolean move(int type) {
+        int dx = 0, dy = 0;
+        switch (type) {
+            case 0:
+                dx = 0;
+                dy = 1;
+                break;
+            case 1:
+                dx = -1;
+                dy = 0;
+                break;
+            case 2:
+                dx = 1;
+                dy = 0;
+                break;
+            case 3:
+                dx = 0;
+                dy = -1;
+                break;
+        }
         if (isMovable(dx, dy)) {
             posX += dx;
             posY += dy;
