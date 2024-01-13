@@ -60,7 +60,7 @@ public class MapGameController implements Initializable {
     public void upButtonAction() {
         printAction("UP");
         chara.setCharaDirection(MoveChara.TYPE_UP);
-        chara.move(0, -1);
+        chara.move(MoveChara.TYPE_UP);
         drawMap();
     }
 
@@ -68,7 +68,7 @@ public class MapGameController implements Initializable {
     public void downButtonAction() {
         printAction("DOWN");
         chara.setCharaDirection(MoveChara.TYPE_DOWN);
-        chara.move(0, 1);
+        chara.move(MoveChara.TYPE_DOWN);
         drawMap();
     }
 
@@ -76,7 +76,7 @@ public class MapGameController implements Initializable {
     public void leftButtonAction() {
         printAction("LEFT");
         chara.setCharaDirection(MoveChara.TYPE_LEFT);
-        chara.move(-1, 0);
+        chara.move(MoveChara.TYPE_LEFT);
         drawMap();
     }
 
@@ -84,7 +84,7 @@ public class MapGameController implements Initializable {
     public void rightButtonAction() {
         printAction("RIGHT");
         chara.setCharaDirection(MoveChara.TYPE_RIGHT);
-        chara.move(1, 0);
+        chara.move(MoveChara.TYPE_RIGHT);
         drawMap();
     }
 
