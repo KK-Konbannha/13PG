@@ -33,6 +33,13 @@ public class MapGameController implements Initializable {
         drawMap(chara, mapData);
     }
 
+    public void do_warp(){
+        if(chara.getPosX() == mapData.getPosWarpX() && chara.getPosY() == mapData.getPosWarpY()){
+            chara.warpEffect();
+            drawMap(chara,mapData);
+        }
+    }
+
     // Draw the map
     public void drawMap(MoveChara c, MapData m) {
         int cx = c.getPosX();

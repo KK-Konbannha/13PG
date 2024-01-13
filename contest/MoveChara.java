@@ -103,6 +103,13 @@ public class MoveChara {
         return posY;
     }
 
+    public void warpEffect(){
+        int rx = this.getPosX();
+        int ry = this.getPosY(); 
+        rx = 1;
+        ry = 1; 
+    }
+
     // Show the cat animation
     private class ImageAnimation extends AnimationTimer {
 
