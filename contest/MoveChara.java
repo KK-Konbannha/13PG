@@ -65,13 +65,8 @@ public class MoveChara {
     private boolean isMovable(int dx, int dy) {
         if (mapData.getMap(posX + dx, posY + dy) == MapData.TYPE_WALL) {
             return false;
-        } else if (mapData.getMap(posX + dx, posY + dy) == MapData.TYPE_SPACE) {
-            return true;
-        } else if (mapData.getMap(posX + dx, posY + dy) == MapData.TYPE_GOAL) {
-            return true;
-        } else {
-            return false;
         }
+        return true;
     }
 
     // move the cat
@@ -106,6 +101,13 @@ public class MoveChara {
     // getter: y-positon of the cat
     public int getPosY() {
         return posY;
+    }
+
+    public void warpEffect(){
+        int rx = this.getPosX();
+        int ry = this.getPosY(); 
+        rx = 1;
+        ry = 1; 
     }
 
     // Show the cat animation
