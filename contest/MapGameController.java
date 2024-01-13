@@ -24,21 +24,13 @@ public class MapGameController implements Initializable {
         mapData = new MapData(21, 15);
         chara = new MoveChara(1, 1, mapData);
         mapImageViews = new ImageView[mapData.getHeight() * mapData.getWidth()];
-        for (int y = 0; y < mapData.getHeight(); y ++) {
-            for (int x = 0; x < mapData.getWidth(); x ++) {
+        for (int y = 0; y < mapData.getHeight(); y++) {
+            for (int x = 0; x < mapData.getWidth(); x++) {
                 int index = y * mapData.getWidth() + x;
                 mapImageViews[index] = mapData.getImageView(x, y);
             }
         }
         drawMap(chara, mapData);
-        do_warp();
-    }
-
-    public void do_warp(){
-        if(chara.getPosX() == mapData.getPosWarpX() && chara.getPosY() == mapData.getPosWarpY()){
-            chara.warpEffect();
-            drawMap(chara,mapData);
-        }
     }
 
     // Draw the map
@@ -46,8 +38,8 @@ public class MapGameController implements Initializable {
         int cx = c.getPosX();
         int cy = c.getPosY();
         mapGrid.getChildren().clear();
-        for (int y = 0; y < mapData.getHeight(); y ++) {
-            for (int x = 0; x < mapData.getWidth(); x ++) {
+        for (int y = 0; y < mapData.getHeight(); y++) {
+            for (int x = 0; x < mapData.getWidth(); x++) {
                 int index = y * mapData.getWidth() + x;
                 if (x == cx && y == cy) {
                     mapGrid.add(c.getCharaImageView(), x, y);
@@ -122,10 +114,10 @@ public class MapGameController implements Initializable {
         int cx = chara.getPosX();
         int cy = chara.getPosY();
         mapData = new MapData(21, 15);
-        chara = new MoveChara(cx,cy, mapData);
+        chara = new MoveChara(cx, cy, mapData);
         mapImageViews = new ImageView[mapData.getHeight() * mapData.getWidth()];
-        for (int y = 0; y < mapData.getHeight(); y ++) {
-            for (int x = 0; x < mapData.getWidth(); x ++) {
+        for (int y = 0; y < mapData.getHeight(); y++) {
+            for (int x = 0; x < mapData.getWidth(); x++) {
                 int index = y * mapData.getWidth() + x;
                 mapImageViews[index] = mapData.getImageView(x, y);
             }
@@ -137,7 +129,7 @@ public class MapGameController implements Initializable {
     @FXML
     public void func3ButtonAction(ActionEvent event) {
         System.out.println("func3: Nothing to do");
-        
+
     }
 
     @FXML
