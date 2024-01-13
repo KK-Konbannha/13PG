@@ -93,7 +93,7 @@ public class MoveChara {
             if (mapData.getMap(x, y) == MapData.TYPE_WARP) {
                 this.posX = 1;
                 this.posY = 1;
-                mapData.setMap(mapData.getPosWarpX(),mapData.getPosWarpY(),MapData.TYPE_SPACE);
+                mapData.setMap(x,y,MapData.TYPE_SPACE);
                 mapData.setImageViews();
             }
     }
