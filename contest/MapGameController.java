@@ -30,19 +30,19 @@ public class MapGameController implements Initializable {
                 mapImageViews[index] = mapData.getImageView(x, y);
             }
         }
-        drawMap(chara, mapData);
+        drawMap();
     }
 
     // Draw the map
-    public void drawMap(MoveChara c, MapData m) {
-        int cx = c.getPosX();
-        int cy = c.getPosY();
+    public void drawMap() {
+        int cx = chara.getPosX();
+        int cy = chara.getPosY();
         mapGrid.getChildren().clear();
         for (int y = 0; y < mapData.getHeight(); y++) {
             for (int x = 0; x < mapData.getWidth(); x++) {
                 int index = y * mapData.getWidth() + x;
                 if (x == cx && y == cy) {
-                    mapGrid.add(c.getCharaImageView(), x, y);
+                    mapGrid.add(chara.getCharaImageView(), x, y);
                 } else {
                     mapGrid.add(mapImageViews[index], x, y);
                 }
@@ -70,7 +70,7 @@ public class MapGameController implements Initializable {
         printAction("UP");
         chara.setCharaDirection(MoveChara.TYPE_UP);
         chara.move(0, -1);
-        drawMap(chara, mapData);
+        drawMap();
     }
 
     // Operations for going the cat down
@@ -78,7 +78,7 @@ public class MapGameController implements Initializable {
         printAction("DOWN");
         chara.setCharaDirection(MoveChara.TYPE_DOWN);
         chara.move(0, 1);
-        drawMap(chara, mapData);
+        drawMap();
     }
 
     // Operations for going the cat right
@@ -86,7 +86,7 @@ public class MapGameController implements Initializable {
         printAction("LEFT");
         chara.setCharaDirection(MoveChara.TYPE_LEFT);
         chara.move(-1, 0);
-        drawMap(chara, mapData);
+        drawMap();
     }
 
     // Operations for going the cat right
@@ -94,7 +94,7 @@ public class MapGameController implements Initializable {
         printAction("RIGHT");
         chara.setCharaDirection(MoveChara.TYPE_RIGHT);
         chara.move(1, 0);
-        drawMap(chara, mapData);
+        drawMap();
     }
 
     @FXML
@@ -120,7 +120,7 @@ public class MapGameController implements Initializable {
                 mapImageViews[index] = mapData.getImageView(x, y);
             }
         }
-        drawMap(chara, mapData);
+        drawMap();
         System.out.println("func2: new map");
     }
 
