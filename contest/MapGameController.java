@@ -111,10 +111,8 @@ public class MapGameController implements Initializable {
 
     @FXML
     public void func2ButtonAction(ActionEvent event) {
-        int cx = chara.getPosX();
-        int cy = chara.getPosY();
         mapData = new MapData(21, 15);
-
+        chara = new MoveChara(1, 1, mapData);
         mapImageViews = new ImageView[mapData.getHeight() * mapData.getWidth()];
         for (int y = 0; y < mapData.getHeight(); y++) {
             for (int x = 0; x < mapData.getWidth(); x++) {
