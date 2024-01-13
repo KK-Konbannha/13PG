@@ -109,8 +109,10 @@ public class MoveChara {
     }
 
     public void warpEffect(){
-        this.getPosX = 1;
-        this.getPosY = 1;
+        int rx = this.getPosX();
+        int ry = this.getPosY(); 
+        rx = 1;
+        ry = 1; 
     }
 
     // Show the cat animation
