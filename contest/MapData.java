@@ -30,8 +30,8 @@ public class MapData {
 
         fillMap(MapData.TYPE_WALL);
         digMap(1, 3);
-        setItems(MapData.TYPE_MUSHROOM, MapData.TYPE_WARP);
         decideGoal();
+        setItems(MapData.TYPE_MUSHROOM, MapData.TYPE_WARP);
         setImageViews();
     }
 
@@ -73,7 +73,7 @@ public class MapData {
             do {
                 x = (int) (Math.random() * width);
                 y = (int) (Math.random() * height);
-            } while (!(x == 1 && y == 1) && getMap(x, y) != MapData.TYPE_SPACE);
+            } while (!(x == 1 && y == 1) && getMap(x, y) != MapData.TYPE_SPACE && getMap(x, y) != MapData.TYPE_GOAL);
             setMap(x, y, item);
         }
     }
