@@ -69,13 +69,13 @@ public class MapData {
     // setting mushroom
     private void setMushroom(){
         int posMushX_rand, posMushY_rand, true_count1;
-        true_count = 0;
-        while(true_count1 = 1){
+        true_count1 = 0;
+        while(true_count1 == 1){
             posMushX_rand = (int)(Math.random() * 21);
             posMushY_rand = (int)(Math.random() * 15);
-            if(!(posMushX_rand = 1 && posMushY_rand = 1)){
-                if(mapData.getMap(posMushX_rand, posMushY_rand) == 0) {
-                    setMap(posMushX_rand, posMushY_rand, Mapdata.TYPE_Mushroom);
+            if(!(posMushX_rand == 1 && posMushY_rand ==1)){
+                if(this.getMap(posMushX_rand, posMushY_rand) == 0) {
+                    setMap(posMushX_rand, posMushY_rand, MapData.TYPE_Mushroom);
                     true_count1 = 1;
                 }
             }
@@ -86,12 +86,12 @@ public class MapData {
     private void setWarp(){
        int posWarpX_rand, posWarpY_rand, true_count2;
        true_count2 = 0;
-        while(true_count2 = 1){
+        while(true_count2 == 1){
             posWarpX_rand = (int)(Math.random() * 21);
             posWarpY_rand = (int)(Math.random() * 15);
-            if(!(posWarpX_rand = 1 && posWarpY_rand = 1)){
-                if(mapData.getMap(posWarpX_rand, posWarpY_rand) == 0) {
-                    setMap(posWarpX_rand, posWarpY_rand, Mapdata.TYPE_Warp);
+            if(!(posWarpX_rand == 1 && posWarpY_rand == 1)){
+                if(this.getMap(posWarpX_rand, posWarpY_rand) == 0) {
+                    setMap(posWarpX_rand, posWarpY_rand, MapData.TYPE_Warp);
                     true_count2 = 1;
                 }
             }
