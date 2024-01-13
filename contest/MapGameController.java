@@ -31,6 +31,7 @@ public class MapGameController implements Initializable {
             }
         }
         drawMap(chara, mapData);
+        do_warp();
     }
 
     public void do_warp(){
