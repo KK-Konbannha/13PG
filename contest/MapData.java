@@ -173,4 +173,14 @@ public class MapData {
     public int getWidth() {
         return width;
     }
+
+    // getter: x-positon of the WarpItem 
+    public int getPosWarpX(){
+        return posWarpX_rand;
+    }
+
+    // getter: y-positon of the WarpItem
+    public int getPosWarpY(){
+        return posWarpY_rand;
+    }
 }
