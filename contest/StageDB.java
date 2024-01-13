@@ -19,7 +19,8 @@ class StageDB {
     static private MediaPlayer mainSound = null;
     static private MediaPlayer gameOverSound = null;
     static private Class mainClass;
-    static private final String mainSoundFileName = "sound/JoyToTheWorld.mp3"; // BGM by OtoLogic
+    static private final String mainSoundFileName = "sound/maou_bgm_8bit02.mp3"; // BGM by 魔王魂
+    static private final String gameoverSoundFileName = "sound/maou_bgm_8bit20.mp3";// BGM by 魔王魂
 
     public static void setMainClass(Class mainClass) {
         StageDB.mainClass = mainClass;
@@ -45,6 +46,12 @@ class StageDB {
         if (gameOverSound == null) {
             try {
                 // please write down the code for playing gameover sound
+                 Media m = new Media(new File(gameoverSoundFileName).toURI().toString());
+                MediaPlayer mp = new MediaPlayer(m);
+                mp.setCycleCount(MediaPlayer.INDEFINITE); // loop play
+                mp.setRate(1.0); // 1.0 = normal speed
+                mp.setVolume(0.5); // volume from 0.0 to 1.0
+                gameOverSound = mp;
             } catch (Exception io) {
                 System.err.print(io.getMessage());
             }
