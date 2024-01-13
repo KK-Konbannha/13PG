@@ -131,6 +131,8 @@ public class MoveChara {
                 TYPE_UP = (int) (Math.random() * 4);
             } while (TYPE_DOWN == TYPE_UP || TYPE_LEFT == TYPE_UP || TYPE_RIGHT == TYPE_UP);
         }
+        mapData.setMap(x, y, MapData.TYPE_SPACE);
+        mapData.setImageViews();
     }
 
     // getter: direction of the cat
