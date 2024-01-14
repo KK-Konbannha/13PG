@@ -95,6 +95,7 @@ public class MapGameController implements Initializable {
             StageDB.getMainStage().hide();
             StageDB.getMainSound().stop();
             StageDB.getGameOverStage().show();
+            StageDB.getGameOverSound().play();//ここ
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
