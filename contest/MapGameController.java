@@ -91,6 +91,8 @@ public class MapGameController implements Initializable {
     @FXML
     public void func1ButtonAction(ActionEvent event) {
         try {
+            //追加
+            lb_0.setText("");
             System.out.println("func1");
             StageDB.getMainStage().hide();
             StageDB.getMainSound().stop();
@@ -103,6 +105,8 @@ public class MapGameController implements Initializable {
 
     @FXML
     public void func2ButtonAction(ActionEvent event) {
+        //追加
+        lb_0.setText("");
         mapData = new MapData(21, 15);
         chara = new MoveChara(1, 1, mapData);
         chara.TYPE_DOWN = 0;
@@ -113,10 +117,15 @@ public class MapGameController implements Initializable {
         System.out.println("func2: new map");
     }
 
+    //追加
+    //時間制限表示用のラベルを取得
+    @FXML
+    private Label lb_0;
     @FXML
     public void func3ButtonAction(ActionEvent event) {
-        System.out.println("func3: Nothing to do");
-
+        //追加
+        //試しで制限時間の機能を実行
+        MapGame.callTask(lb_0, mapData, chara);
     }
 
     @FXML
