@@ -58,6 +58,16 @@ public class MapGame extends Application {
                 //時間をコマンドラインに表示
                 System.out.println("time up count : " + i + " sec");
               } finally {
+                //この時点でキャラがゴールに到達していたらラベルの表示を変えてサービスを終了
+                if (mapData.getMap(chara.getPosX(), chara.getPosY())==MapData.TYPE_GOAL){
+                Platform.runLater( () -> time_count_label.setText( "!! GOAL !!" ) );
+                //GameOverに飛ぶ
+                StageDB.getMainStage().hide();
+                StageDB.getMainSound().stop();
+                StageDB.getGameOverStage().show();
+                StageDB.getGameOverSound().play();
+                break;
+              }
                 if(isCancelled()){
                   break;
                 }
