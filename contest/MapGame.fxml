@@ -18,6 +18,8 @@
 			<Button text="func2" prefWidth="100" onAction="#func2ButtonAction"/>
 			<Button text="func3" prefWidth="100" onAction="#func3ButtonAction"/>
 			<Button text="func4" prefWidth="100" onAction="#func4ButtonAction"/>
+      <!-- 制限時間表示用のラベルを追加 -->
+        <Label fx:id="lb_0" text="" />
       </children>
     </HBox>
     <GridPane fx:id="mapGrid" prefWidth="360" prefHeight="360" >
