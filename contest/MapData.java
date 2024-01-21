@@ -138,6 +138,10 @@ public class MapData {
         return mapImageViews[y][x];
     }
 
+    public void setImageView(int x, int y, int type) {
+        mapImageViews[y][x] = new ImageView(mapImages[type]);
+    }
+
     public void setImageViews() {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
