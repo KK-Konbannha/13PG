@@ -33,7 +33,7 @@ public class MapGame extends Application {
   //追加
   //createTaskTestを呼び出すメソッド
   public static void callTask(Label lb, MapData mapData, MoveChara chara){
-    int timeUpSec = 30;
+    int timeUpSec = 45;
     lb.setText("time up count : " + timeUpSec + " sec");
     createTaskTest(lb, timeUpSec, mapData, chara);
   }
