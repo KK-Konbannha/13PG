@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.input.* ?>
 
-<VBox fx:controller="GameOverController" xmlns:fx="http://javafx.com/javafx/"
+<VBox fx:controller="GameOverController" xmlns:fx="http://javafx.com/fxml"
      alignment="CENTER">
   <children>
 	    <ImageView>
-		    <Image url = "./png/GAMEOVER.png" />
+		    <Image url = "./png/GAMECLEAR.png" />
 		</ImageView>	 
 		<Button onAction="#onGameOverAction" text="迷路に戻る">
 		</Button>
 
   </children>
-</VBox>
+</VBox>  

@@ -16,12 +16,14 @@ class StageDB {
 
     static private Stage mainStage = null;
     static private Stage gameOverStage = null;
+    static private Stage gameClearStage = null;
     static private MediaPlayer mainSound = null;
     static private MediaPlayer gameOverSound = null;
+    static private MediaPlayer gameClearSound = null;
     static private Class mainClass;
     static private final String mainSoundFileName = "sound/maou_bgm_8bit02.mp3"; // BGM by 魔王魂
     static private final String gameoverSoundFileName = "sound/maou_bgm_8bit20.mp3";// BGM by 魔王魂
-
+    static private final String gameclearSoundFileName = "sound/gameclearSound.mp3";
     public static void setMainClass(Class mainClass) {
         StageDB.mainClass = mainClass;
     }
@@ -58,6 +60,22 @@ class StageDB {
         }
         return gameOverSound;
     }
+    //追加
+    public static MediaPlayer getGameClearSound() {
+        if (gameClearSound == null) {
+            try {
+                // please write down the code for playing gameover sound
+                 Media m = new Media(new File(gameclearSoundFileName).toURI().toString());
+                MediaPlayer mp = new MediaPlayer(m);
+                mp.setRate(1.0); // 1.0 = normal speed
+                mp.setVolume(0.5); // volume from 0.0 to 1.0
+                gameClearSound = mp;
+            } catch (Exception io) {
+                System.err.print(io.getMessage());
+            }
+        }
+        return gameClearSound;
+    }
 
     public static Stage getMainStage() {
         if (mainStage == null) {
@@ -88,5 +106,21 @@ class StageDB {
             }
         }
         return gameOverStage;
+    }
+
+    public static Stage getGameClearStage() {
+        if (gameClearStage == null) {
+            try {
+                System.out.println("StageDB:getGameClearStage()");
+                FXMLLoader loader = new FXMLLoader(mainClass.getResource("GameClear.fxml"));
+                VBox root = loader.load();
+                Scene scene = new Scene(root);
+                gameClearStage = new Stage();
+                gameClearStage.setScene(scene);
+            } catch (IOException ioe) {
+                System.err.println(ioe);
+            }
+        }
+        return gameClearStage;
     }
 }
