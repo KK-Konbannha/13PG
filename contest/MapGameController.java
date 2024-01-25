@@ -88,6 +88,10 @@ public class MapGameController implements Initializable {
         drawMap();
     }
 
+    
+
+    
+
     @FXML
     public void func1ButtonAction(ActionEvent event) {
         try {
@@ -106,6 +110,7 @@ public class MapGameController implements Initializable {
     @FXML
     public void func2ButtonAction(ActionEvent event) {
         //追加
+        mapData.setBlackFlag(0);  //暗転オフ
         lb_0.setText("");
         mapData = new MapData(21, 15);
         chara = new MoveChara(1, 1, mapData);
@@ -116,6 +121,8 @@ public class MapGameController implements Initializable {
         drawMap();
         StageDB.getMainSound().play();
         System.out.println("func2: new map");
+        
+        
     }
 
     //追加
@@ -131,7 +138,19 @@ public class MapGameController implements Initializable {
 
     @FXML
     public void func4ButtonAction(ActionEvent event) {
-        System.out.println("func4: Nothing to do");
+        System.out.println("func4: 暗転");
+        for(int bbx = 0; bbx < 21; bbx++){
+                for(int bby = 0; bby < 15; bby++){
+                    if(mapData.getMap(bbx, bby) == MapData.TYPE_SPACE || mapData.getMap(bbx, bby) == MapData.TYPE_WALL){
+                        mapData.setImageView(bbx, bby, MapData.TYPE_BLACK); //壁と床をすべて黒にする
+                    }
+                }
+            }
+        mapData.setBlackFlag(1); //暗転オン
+        
+        
+        
+        
     }
 
     // Print actions of user inputs

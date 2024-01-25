@@ -7,15 +7,17 @@ public class MapData {
     public static final int TYPE_GOAL = 2;
     public static final int TYPE_MUSHROOM = 3;
     public static final int TYPE_WARP = 4;
+    public static final int TYPE_BLACK = 5;
 
     private static final String mapImageFiles[] = { "png/SOUGEN.png", "png/TREE.png", "png/GOAL.png", "png/MUSHROOM.png",
-            "png/WARP.png" };
+            "png/WARP.png", "png/BLACK.png" };
 
     private Image[] mapImages;
     private ImageView[][] mapImageViews;
     private int[][] maps;
     private int width; // width of the map
     private int height; // height of the map
+    private int blackFlag; //暗転のオンオフ切り替え 0でoff 1でon
 
     MapData(int x, int y) {
         mapImages = new Image[mapImageFiles.length];
@@ -156,5 +158,13 @@ public class MapData {
 
     public int getWidth() {
         return width;
+    }
+
+    public int getBlackFlag(){
+        return blackFlag;
+    }
+
+    public void setBlackFlag(int bf){
+         blackFlag = bf;
     }
 }
