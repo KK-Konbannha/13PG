@@ -3,7 +3,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import javafx.animation.AnimationTimer;
 
-
 public class MoveChara {
     public static int TYPE_DOWN = 0;
     public static int TYPE_LEFT = 1;
@@ -108,19 +107,17 @@ public class MoveChara {
     private void goalCheck(int x, int y) {
         if (mapData.getMap(x, y) == MapData.TYPE_GOAL) {
             try {
-                
+
                 StageDB.getMainStage().hide();
                 StageDB.getMainSound().stop();
                 StageDB.getGameClearStage().show();
                 StageDB.getGameClearSound().play();
             } catch (Exception ex) {
-               System.out.println(ex.getMessage());
+                System.out.println(ex.getMessage());
             }
-                
-            
-            
+
+            System.out.println("game clear");
         }
-        System.out.println("game clear");
     }
 
     private void warpCheck(int x, int y) {
@@ -149,54 +146,52 @@ public class MoveChara {
         }
     }
 
-    private void blackCheck(int x, int y){
-        if(mapData.getBlackFlag() == 1){
+    private void blackCheck(int x, int y) {
+        if (mapData.getBlackFlag() == 1) {
             int xmin = x - 2;
             int xmax = x + 2;
             int ymin = y - 2;
             int ymax = y + 2;
 
-            for(int bx = 0; bx < 21; bx++){
-                for(int by = 0; by < 15; by++){
-                    if(mapData.getMap(bx, by) == MapData.TYPE_SPACE || mapData.getMap(bx, by) == MapData.TYPE_WALL){
-                        mapData.setImageView(bx, by, MapData.TYPE_BLACK); //壁と床をすべて黒にする
+            for (int bx = 0; bx < 21; bx++) {
+                for (int by = 0; by < 15; by++) {
+                    if (mapData.getMap(bx, by) == MapData.TYPE_SPACE || mapData.getMap(bx, by) == MapData.TYPE_WALL) {
+                        mapData.setImageView(bx, by, MapData.TYPE_BLACK); // 壁と床をすべて黒にする
                     }
                 }
             }
 
+            for (int i = xmin; i <= xmax; i++) { // 周囲５マスを見えるようにする
+                for (int j = ymin; j <= ymax; j++) {
 
-            for(int i = xmin; i <= xmax; i++){    //周囲５マスを見えるようにする
-                for(int j = ymin; j <= ymax; j++){
-                    
+                    if (mapData.getMap(i, j) == MapData.TYPE_SPACE) {
 
-                    if(mapData.getMap(i,j) == MapData.TYPE_SPACE ){
-                    
                         mapData.setImageView(i, j, MapData.TYPE_SPACE);
                     }
 
-                    if(mapData.getMap(i,j) == MapData.TYPE_WALL ){
-                    
+                    if (mapData.getMap(i, j) == MapData.TYPE_WALL) {
+
                         mapData.setImageView(i, j, MapData.TYPE_WALL);
                     }
 
-                    if(mapData.getMap(i,j) == MapData.TYPE_MUSHROOM ){
-                    
+                    if (mapData.getMap(i, j) == MapData.TYPE_MUSHROOM) {
+
                         mapData.setImageView(i, j, MapData.TYPE_MUSHROOM);
                     }
 
-                    if(mapData.getMap(i,j) == MapData.TYPE_WARP ){
-                    
+                    if (mapData.getMap(i, j) == MapData.TYPE_WARP) {
+
                         mapData.setImageView(i, j, MapData.TYPE_WARP);
                     }
 
-                    if(mapData.getMap(i,j) == MapData.TYPE_GOAL ){
-                    
+                    if (mapData.getMap(i, j) == MapData.TYPE_GOAL) {
+
                         mapData.setImageView(i, j, MapData.TYPE_GOAL);
-                    }                    
+                    }
                 }
             }
         }
-    } 
+    }
 
     // getter: direction of the cat
     public ImageView getCharaImageView() {
