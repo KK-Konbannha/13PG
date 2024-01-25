@@ -114,6 +114,7 @@ public class MapGameController implements Initializable {
         chara.TYPE_RIGHT = 2;
         chara.TYPE_UP = 3;
         drawMap();
+        StageDB.getMainSound().play();
         System.out.println("func2: new map");
     }
 
