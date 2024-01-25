@@ -8,7 +8,7 @@ public class MapData {
     public static final int TYPE_MUSHROOM = 3;
     public static final int TYPE_WARP = 4;
 
-    private static final String mapImageFiles[] = { "png/SPACE.png", "png/WALL.png", "png/GOAL.png", "png/MUSHROOM.png",
+    private static final String mapImageFiles[] = { "png/SOUGEN.png", "png/TREE.png", "png/GOAL.png", "png/MUSHROOM.png",
             "png/WARP.png" };
 
     private Image[] mapImages;
@@ -136,6 +136,10 @@ public class MapData {
 
     public ImageView getImageView(int x, int y) {
         return mapImageViews[y][x];
+    }
+
+    public void setImageView(int x, int y, int type) {
+        mapImageViews[y][x] = new ImageView(mapImages[type]);
     }
 
     public void setImageViews() {

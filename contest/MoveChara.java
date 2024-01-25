@@ -105,6 +105,7 @@ public class MoveChara {
 
     private void goalCheck(int x, int y) {
         if (mapData.getMap(x, y) == MapData.TYPE_GOAL) {
+            StageDB.getMainSound().stop();
             System.out.println("game clear");
         }
     }
@@ -114,7 +115,7 @@ public class MoveChara {
             this.posX = 1;
             this.posY = 1;
             mapData.setMap(x, y, MapData.TYPE_SPACE);
-            mapData.setImageViews();
+            mapData.setImageView(x, y, MapData.TYPE_SPACE);
         }
     }
 
@@ -131,7 +132,7 @@ public class MoveChara {
                 TYPE_UP = (int) (Math.random() * 4);
             } while (TYPE_DOWN == TYPE_UP || TYPE_LEFT == TYPE_UP || TYPE_RIGHT == TYPE_UP);
             mapData.setMap(x, y, MapData.TYPE_SPACE);
-            mapData.setImageViews();
+            mapData.setImageView(x, y, MapData.TYPE_SPACE);
         }
     }
 
