@@ -24,6 +24,7 @@ class StageDB {
     static private final String mainSoundFileName = "sound/maou_bgm_8bit02.mp3"; // BGM by 魔王魂
     static private final String gameoverSoundFileName = "sound/maou_bgm_8bit20.mp3";// BGM by 魔王魂
     static private final String gameclearSoundFileName = "sound/gameclearSound.mp3";
+
     public static void setMainClass(Class mainClass) {
         StageDB.mainClass = mainClass;
     }
@@ -48,7 +49,7 @@ class StageDB {
         if (gameOverSound == null) {
             try {
                 // please write down the code for playing gameover sound
-                 Media m = new Media(new File(gameoverSoundFileName).toURI().toString());
+                Media m = new Media(new File(gameoverSoundFileName).toURI().toString());
                 MediaPlayer mp = new MediaPlayer(m);
                 mp.setCycleCount(MediaPlayer.INDEFINITE); // loop play
                 mp.setRate(1.0); // 1.0 = normal speed
@@ -59,22 +60,6 @@ class StageDB {
             }
         }
         return gameOverSound;
-    }
-    //追加
-    public static MediaPlayer getGameClearSound() {
-        if (gameClearSound == null) {
-            try {
-                // please write down the code for playing gameover sound
-                 Media m = new Media(new File(gameclearSoundFileName).toURI().toString());
-                MediaPlayer mp = new MediaPlayer(m);
-                mp.setRate(1.0); // 1.0 = normal speed
-                mp.setVolume(0.5); // volume from 0.0 to 1.0
-                gameClearSound = mp;
-            } catch (Exception io) {
-                System.err.print(io.getMessage());
-            }
-        }
-        return gameClearSound;
     }
 
     public static Stage getMainStage() {
@@ -95,7 +80,7 @@ class StageDB {
     public static Stage getGameOverStage() {
         if (gameOverStage == null) {
             try {
-                System.out.println("StageDB:getGameOverStage()");
+                // System.out.println("StageDB:getGameOverStage()");
                 FXMLLoader loader = new FXMLLoader(mainClass.getResource("MapGameOver.fxml"));
                 VBox root = loader.load();
                 Scene scene = new Scene(root);
@@ -111,7 +96,7 @@ class StageDB {
     public static Stage getGameClearStage() {
         if (gameClearStage == null) {
             try {
-                System.out.println("StageDB:getGameClearStage()");
+                // System.out.println("StageDB:getGameClearStage()");
                 FXMLLoader loader = new FXMLLoader(mainClass.getResource("GameClear.fxml"));
                 VBox root = loader.load();
                 Scene scene = new Scene(root);

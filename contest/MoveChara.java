@@ -107,11 +107,9 @@ public class MoveChara {
     private void goalCheck(int x, int y) {
         if (mapData.getMap(x, y) == MapData.TYPE_GOAL) {
             try {
-
-                StageDB.getMainStage().hide();
                 StageDB.getMainSound().stop();
+                StageDB.getMainStage().hide();
                 StageDB.getGameClearStage().show();
-                StageDB.getGameClearSound().play();
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
