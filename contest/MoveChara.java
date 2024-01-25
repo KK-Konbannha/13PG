@@ -3,6 +3,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import javafx.animation.AnimationTimer;
 
+
 public class MoveChara {
     public static int TYPE_DOWN = 0;
     public static int TYPE_LEFT = 1;
@@ -106,9 +107,20 @@ public class MoveChara {
 
     private void goalCheck(int x, int y) {
         if (mapData.getMap(x, y) == MapData.TYPE_GOAL) {
-            StageDB.getMainSound().stop();
-            System.out.println("game clear");
+            try {
+                
+                StageDB.getMainStage().hide();
+                StageDB.getMainSound().stop();
+                StageDB.getGameClearStage().show();
+                StageDB.getGameClearSound().play();
+            } catch (Exception ex) {
+               System.out.println(ex.getMessage());
+            }
+                
+            
+            
         }
+        System.out.println("game clear");
     }
 
     private void warpCheck(int x, int y) {
